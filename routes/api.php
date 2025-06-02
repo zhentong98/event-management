@@ -11,6 +11,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/login', [Authcontroller::class, 'login']);
+Route::post('/logout', [Authcontroller::class, 'logout'])
+    ->middleware('auth:sanctum');
 
 Route::apiResource('events', EventController::class)->only(['index', 'show']);
 Route::apiResource('events', EventController::class)
