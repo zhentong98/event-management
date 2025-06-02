@@ -19,6 +19,8 @@ Route::apiResource('events', EventController::class)
     ->except(['index', 'show'])
     ->middleware('auth:sanctum');
 
+Route::apiResource('events.attendees', EventController::class)->only(['index', 'show', 'update']);
 Route::apiResource('events.attendees', AttendeeController::class)
     ->scoped()
-    ->except(['update']);
+    ->except(['index', 'show', 'update'])
+    ->middleware('auth:sanctum');
